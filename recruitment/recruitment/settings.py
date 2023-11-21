@@ -71,8 +71,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'recruitment.wsgi.application'
+
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000"
+    "http://34.131.78.227"
 ]
 
 # Database

@@ -21,8 +21,6 @@ class recruitmentFormData(APIView):
 
         student = recruitment.objects.filter(library_id = library_id)
 
-        print("after")
-
         if(len(student)):
             response = "student already exists!!"
             status = 400

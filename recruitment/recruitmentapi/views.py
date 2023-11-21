@@ -2,11 +2,12 @@ from .models import *
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.parsers import JSONParser
+import json
 
 class recruitmentFormData(APIView):
 
     def post(self, request):
-        data = JSONParser().parse(request)
+        data = request.data
 
         name = data["name"]
         personal_email = data["personal_email"]

@@ -11,9 +11,25 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Import necessary modules
+from google.oauth2 import service_account
+from storages.backends.gcloud import GoogleCloudStorage
+
+# Use the service account credentials to authenticate with GCS
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file('/home/aryan29mishra/devup-recruitment-23/credentials.json')
+
+# Set the storage backend for static files
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'devup-form-static-files'
+GS_PROJECT_ID = 'eternal-lodge-403313'
+GS_CREDENTIALS = GS_CREDENTIALS  # Use the credentials configured earlier
+
+# Optional: Set the base URL for static files
+# STATIC_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
 
 
 # Quick-start development settings - unsuitable for production
@@ -73,8 +89,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'recruitment.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://34.131.78.227"
+    "http://34.131.78.227",
+    "http://localhost:8000",
+    "http://localhost",
+    "http://34.131.78.227:8000",
 ]
+
+CSRF_COOKIE_SECURE = False
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -124,8 +145,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

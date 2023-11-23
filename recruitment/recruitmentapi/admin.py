@@ -34,7 +34,7 @@ class recruitmentsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     # list_filter = ()
 
-    # search_fields = ()
+    search_fields = ("name", "personal_email")
 
     ordering = ('name', 'id')
 

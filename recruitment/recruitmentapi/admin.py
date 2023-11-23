@@ -32,9 +32,9 @@ class recruitmentsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
     list_per_page = 80
 
-    # list_filter = ()
+    list_filter = ("gender", "mode_of_payment", "desk")
 
-    # search_fields = ()
+    search_fields = ("name", "personal_email", "library_id", "phone")
 
     ordering = ('name', 'id')
 

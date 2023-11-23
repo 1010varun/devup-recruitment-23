@@ -26,13 +26,13 @@ def send_html_mail(subject, html_content, recipient_list):
 
 class recruitmentsAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     model = recruitment
-    fields = ['name', 'personal_email', 'kiet_email', 'library_id', 'phone', 'gender', 'mode_of_payment', 'desk', 'payment_status',]
+    fields = ['name', 'personal_email', 'kiet_email', 'library_id', 'phone', 'gender', 'mode_of_payment', 'desk', 'payment_status', 'domain']
 
     list_display = ('name', 'payment_status', 'personal_email', 'id')
 
     list_per_page = 80
 
-    list_filter = ("gender", "mode_of_payment", "desk")
+    list_filter = ("gender", "mode_of_payment", "desk", "domain")
 
 
     search_fields = ("name", "personal_email", "library_id", "phone")
